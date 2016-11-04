@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: "jacoco"
+
+jacoco {
+      toolVersion = "0.7.6.201602180812"
+      reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+      reports {
+                xml.enabled false
+                        csv.enabled false
+                                html.destination "${buildDir}/jacocoHtml"
+                                    }
+}
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.assertj:assertj-core:3.0.0'
+}
